@@ -8,16 +8,14 @@ The required configurations for training phase ('prepare_Data.py', 'train.py').
 cfg = dict()
 
 
-
 """
 The coordinates to crop brain volumes. For example, a brain volume with the 
 One can set the x0,x1,... by calculating none zero pixels through dataset. 
 Note that the final three shapes must be divisible by the network downscale rate.
 """
-cfg['crop_coord']            =  {'x0':42, 'x1':194,
-                                 'y0':29, 'y1':221,
-                                 'z0':2,  'z1':146}
-
+cfg['crop_coord'] = {'x0': 42, 'x1': 194,
+                     'y0': 29, 'y1': 221,
+                     'z0': 2,  'z1': 146}
 
 
 """
@@ -25,100 +23,87 @@ The path to all brain volumes (ex: suppose we have a folder 'MICCAI_BraTS_2019_D
 that contains two HGG and LGG folders so:
 data_dir='./MICCAI_BraTS_2019_Data_Training/*/*')
 """
-cfg['data_dir']              = '/path/to/data/'
-
+cfg['data_dir'] = '../handson-machine-learning/datasets/MICCAI_BraTS_2019_Data_Training/*/*'
 
 
 """
 The final data shapes of saved table file.
 """
-cfg['table_data_shape']      =  (cfg["crop_coord"]['z1']-cfg["crop_coord"]['z0'],
-                                 cfg["crop_coord"]['y1']-cfg["crop_coord"]['y0'], 
-                                 cfg["crop_coord"]['x1']-cfg["crop_coord"]['x0'])
-
+cfg['table_data_shape'] = (cfg["crop_coord"]['z1']-cfg["crop_coord"]['z0'],
+                           cfg["crop_coord"]['y1']-cfg["crop_coord"]['y0'],
+                           cfg["crop_coord"]['x1']-cfg["crop_coord"]['x0'])
 
 
 """
 BraTS datasets contain 4 channels: (FLAIR, T1, T1ce, T2)
 """
-cfg['data_channels']         = 4
+cfg['data_channels'] = 4
 
-
-
+cfg['main_dir'] = '../handson-machine-learning/chapter_14/se_net/BTS'
 """
 The path to save table file + k-fold files
 """
-cfg['save_data_dir']         = './data/'
-
+cfg['save_data_dir'] = '../handson-machine-learning/chapter_14/se_net/BTS/data/'
 
 
 """
 The path to save models + log files + tensorboards
 """
-cfg['save_dir']        = './save/'
-
+cfg['save_dir'] = './save/'
 
 
 """
 k-fold cross-validation
 """
-cfg['k_fold']                = 5
-
+cfg['k_fold'] = 5
 
 
 """
 The defualt path of saved table.
 """
-cfg['hdf5_dir']              = './data/data.hdf5'
-
+cfg['hdf5_dir'] = '../handson-machine-learning/chapter_14/se_net/BTS/data/data.hdf5'
 
 
 """
 The path to brain indexes of specific fold (a numpy file that was saved in ./data/ by default)
 """
-cfg['brains_idx_dir']        = './data/fold0_idx.npy'
-
+cfg['brains_idx_dir'] = '../handson-machine-learning/chapter_14/se_net/BTS/data/fold0_idx.npy'
 
 
 """
 'axial', 'sagittal' or 'coronal'. The 'view' has no effect in "prepare_data.py".
 All 2D slices and the model will be prepared  with respect to 'view'.
 """
-cfg['view']                  = 'axial'
-
+cfg['view'] = 'axial'
 
 
 """
 The batch size for training and validating the model
 """
-cfg['batch_size']            = 16
-cfg['val_batch_size']        = 32
-
+cfg['batch_size'] = 16
+cfg['val_batch_size'] = 32
 
 
 """
 The augmentation parameters.
 """
-cfg['hor_flip']              = True
-cfg['ver_flip']              = True
-cfg['rotation_range']        = 0
-cfg['zoom_range']            = 0.
-
+cfg['hor_flip'] = True
+cfg['ver_flip'] = True
+cfg['rotation_range'] = 0
+cfg['zoom_range'] = 0.
 
 
 """
 The leraning rate and the number of epochs for training the model
 """
-cfg['epochs']                = 100
-cfg['lr']                    = 0.008
-
+cfg['epochs'] = 100
+cfg['lr'] = 0.008
 
 
 """
 If True, use process-based threading. "https://keras.io/models/model/"
 """
-cfg['multiprocessing']       = False 
-
+cfg['multiprocessing'] = False
 
 
 """
@@ -126,35 +111,29 @@ Maximum number of processes to spin up when using process-based threading.
 If unspecified, workers will default to 1. If 0, will execute the generator 
 on the main thread. "https://keras.io/models/model/"
 """
-cfg['workers']               = 1
-
+cfg['workers'] = 1
 
 
 """
 Whether to use the proposed modifid UNet or the original UNet
 """
-cfg['modified_unet']         = True 
-
+cfg['modified_unet'] = True
 
 
 """
 The depth of the U-structure 
 """
-cfg['levels']                = 3
-
+cfg['levels'] = 3
 
 
 """
 The number of channels of the first conv
 """
-cfg['start_chs']             = 64
-
+cfg['start_chs'] = 64
 
 
 """
 If specified, before training, the model weights will be loaded from this path otherwise
 the model will be trained from scratch.
 """
-cfg['load_model_dir']        = None 
-
- 
+cfg['load_model_dir'] = None
