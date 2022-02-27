@@ -1,7 +1,7 @@
 
-The source code for our paper "Attention-Guided Version of 2D UNet for Automatic Brain Tumor Segmentation"
+Forked repo of the source code for the paper "Attention-Guided Version of 2D UNet for Automatic Brain Tumor Segmentation"
 
-Our paper can be found at [this link](https://ieeexplore.ieee.org/document/8964956).
+The paper can be found at [this link](https://ieeexplore.ieee.org/document/8964956).
 
 ## Overview
 - [Dataset](#Dataset)
@@ -35,8 +35,13 @@ The network is based on U-Net architecture with some modifications as follows:
 
 <br />
 
+### Modifications
+
+Few changes have been made to employ tensorpack module's argscope and pyfunctional module's chained sequence processing which helped in avoiding boilerplate code. 
+Tensorpack module can be built from [my fork](https://github.com/gopalakrishna-r/tensorpack.git)
+
 ### Training Process
-Since our proposed network is a 2D architecture, we need to extract 2D slices from 3D volumes of MRI images. To benefit from 3D contextual information of input images, we extract 2D slices from both Axial and Coronal views, and then train a network for each view separately. In the test time, we build the 3D output volume for each model by concatenating the 2D predicted maps. Finally, we fuse the two views by pixel-wise averaging.
+Since their proposed network is a 2D architecture, we need to extract 2D slices from 3D volumes of MRI images. To benefit from 3D contextual information of input images, we extract 2D slices from both Axial and Coronal views, and then train a network for each view separately. In the test time, we build the 3D output volume for each model by concatenating the 2D predicted maps. Finally, we fuse the two views by pixel-wise averaging.
 
 <br />
 
@@ -58,12 +63,12 @@ The results are obtained from the [BraTS online evaluation platform](https://ipp
 <br />
 
 ### Dependencies
-- [numpy 1.17.4](https://numpy.org/)
-- [nibabe l 3.0.1](https://nipy.org/nibabel/)
-- [scipy 1.3.2](https://www.scipy.org/)
-- [tables 3.6.1](https://www.pytables.org/)
-- [Tensorflow 1.15.2](https://www.tensorflow.org/)
-- [Keras 2.2.4](https://keras.io/)
+- [numpy 1.21.5](https://numpy.org/)
+- [nibabe 3.2.2](https://nipy.org/nibabel/)
+- [scipy 1.4.1](https://www.scipy.org/)
+- [tables 3.7.0](https://www.pytables.org/)
+- [Tensorflow 2.2.0](https://www.tensorflow.org/)
+- [Keras 2.8.0](https://keras.io/)
 
 ### Usage
 1- Download the BRATS 2019, 2018 or 2017 data by following the steps described in [BraTS](https://www.med.upenn.edu/cbica/brats2019/registration.html)
